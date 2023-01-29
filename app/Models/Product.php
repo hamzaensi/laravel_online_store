@@ -85,4 +85,26 @@ $request->validate([
 ]);
 }
 
+    public static function sumPricesByQuantities($products, $productsInSession)
+    {
+        $total = 0;
+        foreach ($products as $product) {
+        $total = $total + ($product->getPrice()*$productsInSession[$product->getId()]);
+        }
+        return $total;
+    }
+
+    public function items()
+    {
+    return $this->hasMany(Item::class);
+    }
+    public function getItems()
+    {
+    return $this->items;
+    }
+    public function setItems($items)
+    {
+    $this->items = $items;
+    }
+
 }

@@ -107,6 +107,19 @@ class User extends Authenticatable
     {
     $this->attributes['updated_at'] = $updatedAt;
     }
+    public function orders()
+    {
+    return $this->hasMany(Order::class);
+    }
+    public function getOrders()
+    {
+    return $this->orders;
+    }
+    public function setOrders($orders)
+    {
+    $this->orders = $orders;
+    }
+
 
 
 }
